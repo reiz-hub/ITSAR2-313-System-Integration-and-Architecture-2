@@ -131,8 +131,8 @@ CREATE TABLE enrollments (
 ### Installation
 
 ```bash
-git clone https://github.com/mousetouch5/SAR2.git
-cd SAR2
+git clone https://github.com/reiz-hub/ITSAR2-313-System-Integration-and-Architecture-2.git
+cd Microservices
 cd student-service && npm install && cd ..
 cd course-service && npm install && cd ..
 cd enrollment-service && npm install && cd ..
