@@ -32,42 +32,6 @@ The system is split into three independent microservices plus an API gateway:
 - Cascade deletion is handled through inter-service HTTP calls.
 - All IDs use auto-increment integers for simplicity and performance.
 
-## Database Schema
-
-### Students (students.sqlite)
-```sql
-CREATE TABLE students (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  fullName TEXT NOT NULL,
-  email TEXT NOT NULL UNIQUE,
-  age INTEGER NOT NULL,
-  createdAt TEXT NOT NULL,
-  updatedAt TEXT
-)
-```
-
-### Courses (courses.sqlite)
-```sql
-CREATE TABLE courses (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  name TEXT NOT NULL,
-  description TEXT NOT NULL,
-  credits INTEGER NOT NULL,
-  createdAt TEXT NOT NULL,
-  updatedAt TEXT
-)
-```
-
-### Enrollments (enrollments.sqlite)
-```sql
-CREATE TABLE enrollments (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  studentId INTEGER NOT NULL,
-  courseId INTEGER NOT NULL,
-  enrolledAt TEXT NOT NULL,
-  UNIQUE(studentId, courseId)
-)
-```
 
 ## Project Structure
 
@@ -206,17 +170,6 @@ This creates:
 - Each service can start, stop, and operate independently. If a dependency is down, the service degrades gracefully rather than crashing.
 
 
-
-### Quick Test
-```bash
-# Test all endpoints
-curl http://localhost:3000/students
-curl http://localhost:3000/courses
-curl http://localhost:3000/enrollments
-
-# Test service health
-curl http://localhost:3000/api/health
-```
 
 ## Tech Stack
 
