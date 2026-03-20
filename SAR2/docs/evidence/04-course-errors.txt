@@ -1,0 +1,53 @@
+### Create Course - Missing Fields (400)
+
+curl -X POST http://localhost:3000/courses \
+  -H "Content-Type: application/json" \
+  -d '{"name": "Incomplete Course"}'
+
+HTTP Status: 400
+Response:
+{
+  "error": "400 BAD_REQUEST",
+  "message": "name, description, and credits are required."
+}
+
+---
+
+### Get Course - Not Found (404)
+
+curl -X GET http://localhost:3000/courses/9999
+
+HTTP Status: 404
+Response:
+{
+  "error": "404 NOT_FOUND",
+  "message": "Course not found."
+}
+
+---
+
+### Update Course - Not Found (404)
+
+curl -X PUT http://localhost:3000/courses/9999 \
+  -H "Content-Type: application/json" \
+  -d '{"name": "Nobody"}'
+
+HTTP Status: 404
+Response:
+{
+  "error": "404 NOT_FOUND",
+  "message": "Course not found."
+}
+
+---
+
+### Delete Course - Not Found (404)
+
+curl -X DELETE http://localhost:3000/courses/9999
+
+HTTP Status: 404
+Response:
+{
+  "error": "404 NOT_FOUND",
+  "message": "Course not found."
+}

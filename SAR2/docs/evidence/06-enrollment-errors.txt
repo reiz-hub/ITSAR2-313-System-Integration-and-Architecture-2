@@ -1,0 +1,70 @@
+### Create Enrollment - Missing Fields (400)
+
+curl -i -X POST http://localhost:3000/enrollments ^
+  -H "Content-Type: application/json" ^
+  -d "{\"studentId\": 1}"
+
+HTTP Status: 400
+Response:
+{
+  "error": "400 BAD_REQUEST",
+  "message": "studentId and courseId are required."
+}
+
+---
+
+### Create Enrollment - Student Not Found (404)
+
+curl -i -X POST http://localhost:3000/enrollments ^
+  -H "Content-Type: application/json" ^
+  -d "{\"studentId\": 9999, \"courseId\": 1}"
+
+HTTP Status: 404
+Response:
+{
+  "error": "404 NOT_FOUND",
+  "message": "Student not found."
+}
+
+---
+
+### Create Enrollment - Course Not Found (404)
+
+curl -i -X POST http://localhost:3000/enrollments ^
+  -H "Content-Type: application/json" ^
+  -d "{\"studentId\": 1, \"courseId\": 9999}"
+
+HTTP Status: 404
+Response:
+{
+  "error": "404 NOT_FOUND",
+  "message": "Course not found."
+}
+
+---
+
+### Create Enrollment - Duplicate Enrollment (409)
+
+curl -i -X POST http://localhost:3000/enrollments ^
+  -H "Content-Type: application/json" ^
+  -d "{\"studentId\": 1, \"courseId\": 1}"
+
+HTTP Status: 409
+Response:
+{
+  "error": "409 CONFLICT",
+  "message": "Student is already enrolled in this course."
+}
+
+---
+
+### Get Enrollments by Student - Student Not Found (404)
+
+curl -i -X GET http://localhost:3000/enrollments/student/9999
+
+HTTP Status: 404
+Response:
+{
+  "error": "404 NOT_FOUND",
+  "message": "Student not found."
+}
