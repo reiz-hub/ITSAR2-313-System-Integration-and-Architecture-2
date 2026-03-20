@@ -1,0 +1,173 @@
+### Create Enrollment - Success (201)
+
+curl -i -X POST http://localhost:3000/enrollments ^
+  -H "Content-Type: application/json" ^
+  -d "{\"studentId\": 1, \"courseId\": 1}"
+
+HTTP Status: 201
+Response:
+{
+  "id": 1,
+  "message": "created"
+}
+
+---
+
+### Get All Enrollments - Success (200)
+
+curl -i -X GET http://localhost:3000/enrollments
+
+HTTP Status: 200
+Response:
+{
+  "data": [
+    {
+      "id": 1,
+      "studentId": 1,
+      "courseId": 1,
+      "enrolledAt": "2026-03-20T10:00:00.000Z",
+      "studentName": "Alice Johnson",
+      "courseName": "Introduction to Programming"
+    },
+    {
+      "id": 2,
+      "studentId": 1,
+      "courseId": 3,
+      "enrolledAt": "2026-03-20T10:00:01.000Z",
+      "studentName": "Alice Johnson",
+      "courseName": "Web Development"
+    },
+    {
+      "id": 3,
+      "studentId": 2,
+      "courseId": 1,
+      "enrolledAt": "2026-03-20T10:00:02.000Z",
+      "studentName": "Bob Smith",
+      "courseName": "Introduction to Programming"
+    },
+    {
+      "id": 4,
+      "studentId": 2,
+      "courseId": 2,
+      "enrolledAt": "2026-03-20T10:00:03.000Z",
+      "studentName": "Bob Smith",
+      "courseName": "Data Structures and Algorithms"
+    },
+    {
+      "id": 5,
+      "studentId": 2,
+      "courseId": 4,
+      "enrolledAt": "2026-03-20T10:00:04.000Z",
+      "studentName": "Bob Smith",
+      "courseName": "Database Systems"
+    },
+    {
+      "id": 6,
+      "studentId": 3,
+      "courseId": 2,
+      "enrolledAt": "2026-03-20T10:00:05.000Z",
+      "studentName": "Carol Williams",
+      "courseName": "Data Structures and Algorithms"
+    },
+    {
+      "id": 7,
+      "studentId": 3,
+      "courseId": 3,
+      "enrolledAt": "2026-03-20T10:00:06.000Z",
+      "studentName": "Carol Williams",
+      "courseName": "Web Development"
+    },
+    {
+      "id": 8,
+      "studentId": 4,
+      "courseId": 3,
+      "enrolledAt": "2026-03-20T10:00:07.000Z",
+      "studentName": "David Brown",
+      "courseName": "Web Development"
+    },
+    {
+      "id": 9,
+      "studentId": 4,
+      "courseId": 4,
+      "enrolledAt": "2026-03-20T10:00:08.000Z",
+      "studentName": "David Brown",
+      "courseName": "Database Systems"
+    },
+    {
+      "id": 10,
+      "studentId": 4,
+      "courseId": 5,
+      "enrolledAt": "2026-03-20T10:00:09.000Z",
+      "studentName": "David Brown",
+      "courseName": "Software Engineering"
+    },
+    {
+      "id": 11,
+      "studentId": 5,
+      "courseId": 1,
+      "enrolledAt": "2026-03-20T10:00:10.000Z",
+      "studentName": "Eva Martinez",
+      "courseName": "Introduction to Programming"
+    },
+    {
+      "id": 12,
+      "studentId": 5,
+      "courseId": 5,
+      "enrolledAt": "2026-03-20T10:00:11.000Z",
+      "studentName": "Eva Martinez",
+      "courseName": "Software Engineering"
+    }
+  ],
+  "count": 12
+}
+
+---
+
+### Get Enrollments by Student - Success (200)
+
+curl -i -X GET http://localhost:3000/enrollments/student/1
+
+HTTP Status: 200
+Response:
+[
+  {
+    "id": 1,
+    "studentId": 1,
+    "courseId": 1,
+    "enrolledAt": "2026-03-20T10:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "studentId": 1,
+    "courseId": 3,
+    "enrolledAt": "2026-03-20T10:00:01.000Z"
+  }
+]
+
+---
+
+### Delete Enrollments by Student - Success (200)
+
+curl -i -X DELETE http://localhost:3000/enrollments/student/1
+
+HTTP Status: 200
+Response:
+{
+  "id": "1",
+  "message": "deleted",
+  "removedCount": 2
+}
+
+---
+
+### Delete Enrollments by Course - Success (200)
+
+curl -i -X DELETE http://localhost:3000/enrollments/course/1
+
+HTTP Status: 200
+Response:
+{
+  "id": "1",
+  "message": "deleted",
+  "removedCount": 3
+}
