@@ -1,6 +1,6 @@
 # ITSAR2-313-System-Integration-and-Architecture-2
 
-# ITSAR2 313 – System Integration and Architecture 2
+
 
 ## Lab Branches
 
