@@ -3,13 +3,13 @@
 **Laboratory 1: Monolithic vs Microservices Architecture (SAR2)**
 ITSAR2 313 – System Integration and Architecture 2
 
-## Members
+##  Members
 
-BOMBATE, RIZZA
-ENGRACIAL, QUENNIE
-IGNALAGUE, RODNEY
-REBLANDO, ANTON
-SAUSA, EDEN CARL
+- BOMBATE, RIZZA
+- ENGRACIAL, QUENNIE
+- IGNALAGUE, RODNEY
+- REBLANDO, ANTON
+- SAUSA, EDEN CARL
 
 
 ---
