@@ -102,23 +102,38 @@ CREATE TABLE enrollments (
 
 ## API Endpoints
 
-| Method   | Endpoint                       | Description                        |
-|----------|--------------------------------|------------------------------------|
-| `POST`   | `/students`                    | Create a new student               |
-| `GET`    | `/students`                    | Get all students                   |
-| `GET`    | `/students/:id`                | Get a student by ID                |
-| `PUT`    | `/students/:id`                | Update a student                   |
-| `DELETE` | `/students/:id`                | Delete a student + enrollments     |
-| `POST`   | `/courses`                     | Create a new course                |
-| `GET`    | `/courses`                     | Get all courses                    |
-| `GET`    | `/courses/:id`                 | Get a course by ID                 |
-| `PUT`    | `/courses/:id`                 | Update a course                    |
-| `DELETE` | `/courses/:id`                 | Delete a course + enrollments      |
-| `POST`   | `/enrollments`                 | Enroll a student in a course       |
-| `GET`    | `/enrollments`                 | Get all enrollments                |
-| `GET`    | `/enrollments/student/:id`     | Get enrollments for a student      |
-| `DELETE` | `/enrollments/student/:id`     | Remove enrollments by student (inter-service) |
-| `DELETE` | `/enrollments/course/:id`      | Remove enrollments by course (inter-service)  |
+### Student Service (Port 3001)
+Accessible via API Gateway at `http://localhost:3000/students`
+
+| Method   | Endpoint         | Description                        |
+|----------|------------------|------------------------------------|
+| `POST`   | `/students`      | Create a new student               |
+| `GET`    | `/students`      | Get all students                   |
+| `GET`    | `/students/:id`  | Get a student by ID                |
+| `PUT`    | `/students/:id`  | Update a student                   |
+| `DELETE` | `/students/:id`  | Delete a student + enrollments     |
+
+### Course Service (Port 3002)
+Accessible via API Gateway at `http://localhost:3000/courses`
+
+| Method   | Endpoint        | Description                        |
+|----------|-----------------|-----------------------------------|
+| `POST`   | `/courses`      | Create a new course                |
+| `GET`    | `/courses`      | Get all courses                    |
+| `GET`    | `/courses/:id`  | Get a course by ID                 |
+| `PUT`    | `/courses/:id`  | Update a course                    |
+| `DELETE` | `/courses/:id`  | Delete a course + enrollments      |
+
+### Enrollment Service (Port 3003)
+Accessible via API Gateway at `http://localhost:3000/enrollments`
+
+| Method   | Endpoint                       | Description                                      |
+|----------|--------------------------------|--------------------------------------------------|
+| `POST`   | `/enrollments`                 | Enroll a student in a course                     |
+| `GET`    | `/enrollments`                 | Get all enrollments                              |
+| `GET`    | `/enrollments/student/:id`     | Get enrollments for a student                    |
+| `DELETE` | `/enrollments/student/:id`     | Remove enrollments by student (inter-service)    |
+| `DELETE` | `/enrollments/course/:id`      | Remove enrollments by course (inter-service)     |
 
 
 
