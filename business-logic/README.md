@@ -1,3 +1,19 @@
+
+
+## Laboratory Exercise 3 Systems on Business Logic
+
+
+##  Members
+
+- BOMBATE, RIZZA
+- ENGRACIAL, QUENNIE
+- IGNALAGUE, RODNEY
+- REBLANDO, ANTON
+- SAUSA, EDEN CARL
+
+
+
+
 # Product Ordering API
 
 A simple REST API demonstrating **business logic validation** in a product ordering system. This project is designed as a university lab exercise to help students understand how to implement and enforce business rules in web applications.
