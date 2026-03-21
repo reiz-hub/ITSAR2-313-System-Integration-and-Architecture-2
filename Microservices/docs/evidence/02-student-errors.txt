@@ -1,0 +1,86 @@
+### Create Student - Missing Fields (400)
+
+curl -i -X POST http://localhost:3000/students ^
+  -H "Content-Type: application/json" ^
+  -d "{\"fullName\": \"Jane Doe\"}"
+
+HTTP Status: 400
+Response:
+{
+  "error": "400 Validation failed",
+  "details": [
+    "email is required",
+    "age is required"
+  ]
+}
+
+---
+
+### Create Student - Duplicate Email (409)
+
+curl -i -X POST http://localhost:3000/students ^
+  -H "Content-Type: application/json" ^
+  -d "{\"fullName\": \"Another Alice\", \"email\": \"alice.johnson@university.edu\", \"age\": 25}"
+
+HTTP Status: 409
+Response:
+{
+  "error": "409 CONFLICT",
+  "message": "Email already exists."
+}
+
+---
+
+### Get Student - Not Found (404)
+
+curl -i -X GET http://localhost:3000/students/9999
+
+HTTP Status: 404
+Response:
+{
+  "error": "404 NOT_FOUND",
+  "message": "Student not found."
+}
+
+---
+
+### Update Student - Not Found (404)
+
+curl -i -X PUT http://localhost:3000/students/9999 ^
+  -H "Content-Type: application/json" ^
+  -d "{\"fullName\": \"Nobody\", \"email\": \"nobody@example.com\", \"age\": 25}"
+
+HTTP Status: 404
+Response:
+{
+  "error": "404 NOT_FOUND",
+  "message": "Student not found."
+}
+
+---
+
+### Update Student - Duplicate Email (409)
+
+curl -i -X PUT http://localhost:3000/students/2 ^
+  -H "Content-Type: application/json" ^
+  -d "{\"fullName\": \"Test\", \"email\": \"alice.johnson@university.edu\", \"age\": 22}"
+
+HTTP Status: 409
+Response:
+{
+  "error": "409 CONFLICT",
+  "message": "Email already exists."
+}
+
+---
+
+### Delete Student - Not Found (404)
+
+curl -i -X DELETE http://localhost:3000/students/9999
+
+HTTP Status: 404
+Response:
+{
+  "error": "404 NOT_FOUND",
+  "message": "Student not found."
+}
