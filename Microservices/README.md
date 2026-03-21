@@ -16,16 +16,17 @@ SAUSA, EDEN CARL
 
 A microservices-based web application for managing students, courses, and enrollments. Built with **Node.js**, **Express**, **SQLite (sql.js)**, and **Vanilla JavaScript**.
 
-This project implements a Simple Student Course System in two architectures side-by-side:
-
-| Architecture  | Location |
-|---------------|----------|
-| Monolith      | SAR2 |
-| Microservices | Microservices/ |
 
 ## Architecture
 
-The system is split into three independent microservices plus an API gateway:
+This project was originally built as a monolith and later 
+refactored into a microservices architecture. The system is 
+split into three independent microservices plus an API gateway:
+
+- **Student Service** – manages student data (port 3001)
+- **Course Service** – manages course data (port 3002)
+- **Enrollment Service** – manages enrollments (port 3003)
+- **API Gateway** – single entry point that routes requests to the correct service (port 3000)
 
 | Service            | Port | Database               | Description                        |
 |--------------------|------|------------------------|------------------------------------|
@@ -39,42 +40,6 @@ The system is split into three independent microservices plus an API gateway:
 - Cascade deletion is handled through inter-service HTTP calls.
 - All IDs use auto-increment integers for simplicity and performance.
 
-## Database Schema
-
-### Students (students.sqlite)
-```sql
-CREATE TABLE students (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  fullName TEXT NOT NULL,
-  email TEXT NOT NULL UNIQUE,
-  age INTEGER NOT NULL,
-  createdAt TEXT NOT NULL,
-  updatedAt TEXT
-)
-```
-
-### Courses (courses.sqlite)
-```sql
-CREATE TABLE courses (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  name TEXT NOT NULL,
-  description TEXT NOT NULL,
-  credits INTEGER NOT NULL,
-  createdAt TEXT NOT NULL,
-  updatedAt TEXT
-)
-```
-
-### Enrollments (enrollments.sqlite)
-```sql
-CREATE TABLE enrollments (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  studentId INTEGER NOT NULL,
-  courseId INTEGER NOT NULL,
-  enrolledAt TEXT NOT NULL,
-  UNIQUE(studentId, courseId)
-)
-```
 
 ## Project Structure
 
@@ -142,51 +107,7 @@ Accessible via API Gateway at `http://localhost:3000/enrollments`
 | `DELETE` | `/enrollments/student/:id`     | Remove enrollments by student (inter-service)    |
 | `DELETE` | `/enrollments/course/:id`      | Remove enrollments by course (inter-service)     |
 
-### Response Formats
 
-**List endpoints** (GET /students, GET /courses, GET /enrollments):
-```json
-{
-  "data": [...],
-  "count": 5
-}
-```
-
-**Create endpoints** (POST):
-```json
-{
-  "message": "created",
-  "data": { "id": 1, ... }
-}
-```
-
-**Update endpoints** (PUT):
-```json
-{
-  "id": 1,
-  "message": "updated"
-}
-```
-
-**Delete endpoints** (DELETE):
-```json
-{
-  "id": 1,
-  "message": "deleted"
-}
-```
-
-**Enriched enrollment data**:
-```json
-{
-  "id": 1,
-  "studentId": 1,
-  "courseId": 1,
-  "enrolledAt": "2026-03-20T10:00:00.000Z",
-  "studentName": "Alice Johnson",
-  "courseName": "Introduction to Programming"
-}
-```
 
 ## Getting Started
 
@@ -249,58 +170,6 @@ This creates:
 
 ---
 
-## Error Handling
-
-| Code | Meaning               | When It Occurs                                                |
-|------|-----------------------|---------------------------------------------------------------|
-| 201  | Created               | Student, course, or enrollment created successfully           |
-| 400  | Bad Request           | Missing or invalid fields in request body                     |
-| 404  | Not Found             | Resource does not exist                                       |
-| 409  | Conflict              | Duplicate email or duplicate enrollment                       |
-| 503  | Service Unavailable   | A dependent microservice is down                              |
-| 504  | Gateway Timeout       | A dependent microservice did not respond within 5 seconds     |
-
-### Error Response Formats
-
-**400 Bad Request** (Validation failed):
-```json
-{
-  "error": "400 Validation failed",
-  "details": ["email is required", "age is required"]
-}
-```
-
-**404 Not Found**:
-```json
-{
-  "error": "404 NOT_FOUND",
-  "message": "Student not found."
-}
-```
-
-**409 Conflict**:
-```json
-{
-  "error": "409 CONFLICT",
-  "message": "Email already exists."
-}
-```
-
-**503 Service Unavailable**:
-```json
-{
-  "error": "503 SERVICE_UNAVAILABLE",
-  "message": "Student Service is unavailable."
-}
-```
-
-**504 Gateway Timeout**:
-```json
-{
-  "error": "504 GATEWAY_TIMEOUT",
-  "message": "Student Service did not respond in time."
-}
-```
 
 ## Inter-Service Communication
 
@@ -308,22 +177,6 @@ This creates:
 - **Student/Course Services** call Enrollment Service via HTTP to cascade-delete enrollments when a student or course is deleted. If the Enrollment Service is unavailable, the delete still succeeds with a `warning` field indicating orphan enrollments may remain.
 - Each service can start, stop, and operate independently. If a dependency is down, the service degrades gracefully rather than crashing.
 
-## Testing Documentation
-
-Comprehensive testing documentation is available in the following locations:
-
-### Test Commands
-- **`tests/curl-tests.md`** - Complete collection of curl commands for testing all API endpoints including success cases, error cases, and service unavailability scenarios
-
-### Evidence & Reports
-- **`docs/report.md`** - Detailed report explaining all implemented edge cases, architectural decisions, and reflections
-- **`docs/evidence/01-student-success.txt`** - Student CRUD success responses
-- **`docs/evidence/02-student-errors.txt`** - Student error responses (400, 404, 409)
-- **`docs/evidence/03-course-success.txt`** - Course CRUD success responses
-- **`docs/evidence/04-course-errors.txt`** - Course error responses (400, 404)
-- **`docs/evidence/05-enrollment-success.txt`** - Enrollment success responses
-- **`docs/evidence/06-enrollment-errors.txt`** - Enrollment error responses (400, 404, 409)
-- **`docs/evidence/07-service-unavailable.txt`** - Service unavailability tests (503, 504)
 
 ### Quick Test
 ```bash
