@@ -16,8 +16,6 @@ ITSAR2 313 – System Integration and Architecture 2
 
 ## Overview
 
-A microservices-based web application for managing students, courses, and enrollments. Built with **Node.js**, **Express**, **SQLite (sql.js)**, and **Vanilla JavaScript**.
-
 This project implements a Simple Student Course System in two architectures side-by-side:
 
 | Architecture  | Location |
