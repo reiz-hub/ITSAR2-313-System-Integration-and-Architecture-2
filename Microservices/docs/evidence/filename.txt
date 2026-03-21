@@ -1,0 +1,3 @@
+curl: (3) bad range in URL position 2:
+[options]
+ ^

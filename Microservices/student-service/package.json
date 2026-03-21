@@ -1,0 +1,14 @@
+{
+  "name": "student-service",
+  "version": "1.0.0",
+  "description": "Student microservice - manages student data",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "sql.js": "^1.11.0"
+  }
+}
