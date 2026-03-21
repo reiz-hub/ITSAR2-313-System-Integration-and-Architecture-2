@@ -14,11 +14,24 @@ ITSAR2 313 – System Integration and Architecture 2
 
 ---
 
+## Overview
+
 A microservices-based web application for managing students, courses, and enrollments. Built with **Node.js**, **Express**, **SQLite (sql.js)**, and **Vanilla JavaScript**.
+
+This project implements a Simple Student Course System in two architectures side-by-side:
+
+| Architecture  | Location |
+|---------------|----------|
+| Monolith      | SAR2 |
+| Microservices | Microservices/ |
+
 
 ## Architecture
 
-The system is split into three independent microservices plus an API gateway:
+The monolith(SAR2) was the original implementation using a single server
+with in-memory storage, later redesigned into microservices where
+each service runs independently with its own SQLite database
+communicating through an API gateway.
 
 | Service            | Port | Database               | Description                        |
 |--------------------|------|------------------------|------------------------------------|
