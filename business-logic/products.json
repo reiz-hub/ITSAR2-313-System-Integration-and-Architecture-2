@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Wireless Mouse",
+    "price": 29.99,
+    "stock": 43
+  },
+  {
+    "id": 2,
+    "name": "USB Keyboard",
+    "price": 49.99,
+    "stock": 30
+  },
+  {
+    "id": 3,
+    "name": "HDMI Cable",
+    "price": 12.99,
+    "stock": 100
+  },
+  {
+    "id": 4,
+    "name": "Webcam HD",
+    "price": 79.99,
+    "stock": 15
+  }
+]
