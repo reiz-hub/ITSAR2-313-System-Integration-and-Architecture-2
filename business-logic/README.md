@@ -1,6 +1,6 @@
 
-
-## Laboratory Exercise 3 Systems on Business Logic
+**Laboratory 2: Systems on Business Logic**
+ITSAR2 313 – System Integration and Architecture 2
 
 
 ##  Members
