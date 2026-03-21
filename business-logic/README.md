@@ -85,7 +85,10 @@ Processes a product order with business logic validation.
 |------|-----------|----------------|
 | 1 | Product must exist | `Product with ID X not found` |
 | 2 | Quantity must be > 0 | `Quantity must be greater than 0` |
-| 3 | Quantity must not exceed stock | `Insufficient stock. Available: X, Requested: Y` |
+| 3 | Quantity cannot be zero | `Quantity must be greater than 0` |
+| 4 | Quantity cannot be negative | `Quantity must be greater than 0` |
+| 5 | Quantity must not exceed stock | `Insufficient stock. Available: X, Requested: Y` |
+
 
 **Success Response (200):**
 ```json
