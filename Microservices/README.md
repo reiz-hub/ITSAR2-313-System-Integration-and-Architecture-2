@@ -1,6 +1,6 @@
 # Student Course System — Microservices Architecture
 
-**Laboratory 1: Monolithic vs Microservices Architecture (SAR2)**
+**Laboratory 2: Microservices Edge Case Testing (Curl-Based)**
 ITSAR2 313 – System Integration and Architecture 2
 
 ## Members
