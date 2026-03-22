@@ -18,7 +18,14 @@ A microservices-based web application for managing students, courses, and enroll
 
 ## Architecture
 
-The system is split into three independent microservices plus an API gateway:
+This project was originally built as a monolith and later 
+refactored into a microservices architecture. The system is 
+split into three independent microservices plus an API gateway:
+
+- **Student Service** – manages student data (port 3001)
+- **Course Service** – manages course data (port 3002)
+- **Enrollment Service** – manages enrollments (port 3003)
+- **API Gateway** – single entry point that routes requests to the correct service (port 3000)
 
 | Service            | Port | Database               | Description                        |
 |--------------------|------|------------------------|------------------------------------|
