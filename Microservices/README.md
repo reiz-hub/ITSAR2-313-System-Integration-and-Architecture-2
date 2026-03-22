@@ -3,13 +3,12 @@
 **Laboratory 2: Microservices Edge Case Testing (Curl-Based)**
 ITSAR2 313 – System Integration and Architecture 2
 
-## Members
+##  Members
 
-BOMBATE, RIZZA
-ENGRACIAL, QUENNIE
-IGNALAGUE, RODNEY
-REBLANDO, ANTON
-SAUSA, EDEN CARL
+- BOMBATE, RIZZA
+- ENGRACIAL, QUENNIE
+- IGNALAGUE, RODNEY
+- REBLANDO, ANTON
 
 
 ---
