@@ -16,13 +16,6 @@ SAUSA, EDEN CARL
 
 A microservices-based web application for managing students, courses, and enrollments. Built with **Node.js**, **Express**, **SQLite (sql.js)**, and **Vanilla JavaScript**.
 
-This project implements a Simple Student Course System in two architectures side-by-side:
-
-| Architecture  | Location |
-|---------------|----------|
-| Monolith      | SAR2 |
-| Microservices | Microservices/ |
-
 ## Architecture
 
 The system is split into three independent microservices plus an API gateway:
