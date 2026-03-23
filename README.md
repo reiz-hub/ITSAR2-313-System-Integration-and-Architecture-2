@@ -118,6 +118,8 @@ Accessible via API Gateway at `http://localhost:3000/enrollments`
 
 ```bash
 git clone https://github.com/reiz-hub/ITSAR2-313-System-Integration-and-Architecture-2.git
+cd ITSAR2-313-System-Integration-and-Architecture-2
+git checkout "LAB2"
 cd Microservices
 cd student-service && npm install && cd ..
 cd course-service && npm install && cd ..
