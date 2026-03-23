@@ -11,7 +11,7 @@ ITSAR2 313 – System Integration and Architecture 2
 - REBLANDO, ANTON
 - SAUSA, EDEN CARL
 
-
+  [Lab 1 Documentation](https://docs.google.com/document/d/1R-CVgnW5du1OOZf2eNJ8AUH3Tz1PKj4zJpmRscF1iEg/edit?usp=sharing)
 ---
 
 ## Overview
@@ -122,6 +122,8 @@ Accessible via API Gateway at `http://localhost:3000/enrollments`
 
 ```bash
 git clone https://github.com/reiz-hub/ITSAR2-313-System-Integration-and-Architecture-2.git
+cd ITSAR2-313-System-Integration-and-Architecture-2
+git checkout "LAB1"
 cd Microservices
 cd student-service && npm install && cd ..
 cd course-service && npm install && cd ..
