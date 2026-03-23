@@ -11,7 +11,7 @@ ITSAR2 313 – System Integration and Architecture 2
 - REBLANDO, ANTON
 - SAUSA, EDEN CARL
 
-
+  [Lab 2 Documentation](https://docs.google.com/document/d/1Ln8a8756UxZ4MjN_M1z6K5ukJD5AhELGdkOGutWtZiE/edit?usp=sharing)
 ---
 
 A microservices-based web application for managing students, courses, and enrollments. Built with **Node.js**, **Express**, **SQLite (sql.js)**, and **Vanilla JavaScript**.
