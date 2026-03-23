@@ -12,7 +12,7 @@ ITSAR2 313 – System Integration and Architecture 2
 - SAUSA, EDEN CARL
 
 
-
+   [Lab 3 Documentation](https://docs.google.com/document/d/1JyIH31TxYtSIis3uPHzi4LLMz1LKfwJrgQDp6qQUl3k/edit?usp=sharing)
 
 # Product Ordering API
 
