@@ -51,15 +51,22 @@ app.use((req, res, next) => {
 
 // --------------- Proxy Helper ---------------
 
+const REQUEST_TIMEOUT_MS = 10000; // 10 seconds
+
 /**
  * Forwards the incoming request to the target service URL.
  * Passes along the method, headers, and body.
+ * Handles timeout (504) and dependency down (503) errors.
  */
 async function proxyRequest(targetUrl, req, res) {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS);
+
   try {
     const options = {
       method: req.method,
       headers: { 'Content-Type': 'application/json' },
+      signal: controller.signal,
     };
 
     // Only include body for methods that support it
@@ -68,11 +75,23 @@ async function proxyRequest(targetUrl, req, res) {
     }
 
     const response = await fetch(targetUrl, options);
+    clearTimeout(timeoutId);
     const data = await response.json();
 
     res.status(response.status).json(data);
   } catch (err) {
+    clearTimeout(timeoutId);
     console.error(`Proxy error for ${targetUrl}:`, err.message);
+
+    // Check if it's a timeout error (AbortError)
+    if (err.name === 'AbortError') {
+      return res.status(504).json({
+        error: '504 GATEWAY_TIMEOUT',
+        message: 'The upstream service did not respond in time.'
+      });
+    }
+
+    // Connection refused, DNS failure, or other network errors
     res.status(503).json({
       error: '503 SERVICE_UNAVAILABLE',
       message: 'The requested service is currently unavailable.'
