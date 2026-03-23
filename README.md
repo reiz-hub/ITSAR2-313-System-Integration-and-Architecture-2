@@ -33,16 +33,22 @@ This API simulates a basic e-commerce ordering system where:
 - npm (comes with Node.js)
 
 ## Installation
-
-1. Navigate to the project directory:
-   ```bash
+1. Clone the repository:
+```bash
+   git clone https://github.com/reiz-hub/ITSAR2-313-System-Integration-and-Architecture-2.git
+```
+2. Switch to Lab 3 branch:
+```bash
+   git checkout "LAB3"
+```
+3. Navigate to the project directory:
+```bash
    cd business-logic
-   ```
-
-2. Install dependencies:
-   ```bash
+```
+4. Install dependencies:
+```bash
    npm install
-   ```
+```
 
 ## Running the Server
 
