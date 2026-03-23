@@ -11,7 +11,7 @@ ITSAR2 313 – System Integration and Architecture 2
 - REBLANDO, ANTON
 - SAUSA, EDEN CARL
 
-
+  [Lab 1 Documentation](https://docs.google.com/document/d/1XULMjWg8I3ABC_0VFnzLxUzJaSzK7llYvR3B2UXVQPE/edit?usp=sharing)
 ---
 
 ## Overview
