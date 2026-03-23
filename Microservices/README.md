@@ -189,8 +189,9 @@ Accessible via API Gateway at `http://localhost:3000/enrollments`
 ### Installation
 
 ```bash
-git clone https://github.com/mousetouch5/SAR2.git
-cd SAR2
+
+cd ITSAR2-313-System-Integration-and-Architecture-2
+git checkout "LAB1"
 cd student-service && npm install && cd ..
 cd course-service && npm install && cd ..
 cd enrollment-service && npm install && cd ..
